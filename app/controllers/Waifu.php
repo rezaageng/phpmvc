@@ -30,4 +30,17 @@ class Waifu extends Controller {
             exit;
         }
     }
+
+    public function hapus($id)
+    {
+        if ($this->model('Waifu_model')->hapusDataWaifu($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'warning');
+            header('Location: ' . BASEURL. '/waifu');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            header('Location: ' . BASEURL. '/waifu');
+            exit;
+        }
+    }
 }

@@ -13,10 +13,10 @@
             <h3 class="mt-4">Daftar Waifu</h3>
             <ul class="list-group">
                 <?php foreach ($data["wfu"] as $wfu) : ?>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <li class="list-group-item">
                     <?= $wfu['nama'] ?>
-                    <a href="<?= BASEURL ?>/waifu/detail/<?=$wfu['id']?>"
-                        class="btn-sm btn-primary text-decoration-none">Detail</a>
+                    <a href="<?= BASEURL ?>/waifu/hapus/<?=$wfu['id']?>"class="btn-sm btn-danger text-decoration-none float-end ms-1" onclick="return confirm('Hapus?')">Hapus</a>
+                    <a href="<?= BASEURL ?>/waifu/detail/<?=$wfu['id']?>"class="btn-sm btn-primary text-decoration-none float-end ms-1">Detail</a>
                 </li>
                 <?php endforeach; ?>
             </ul>

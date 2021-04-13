@@ -33,4 +33,14 @@ class Waifu_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function hapusDataWaifu($id)
+    {
+        $query = "DELETE FROM waifu WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
