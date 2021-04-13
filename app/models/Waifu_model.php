@@ -7,7 +7,8 @@ class Waifu_model {
         $this->db = new Database;
     }
 
-    public function getAllWaifu() {
+    public function getAllWaifu() 
+    {
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
@@ -17,5 +18,19 @@ class Waifu_model {
         $this->db->query('SELECT * FROM '. $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);
         return $this->db->single();
+    }
+
+    public function tambahDataWaifu($data)
+    {
+        $query = "INSERT INTO waifu VALUES ('', :nama, :nis, :email, :jurusan)";
+
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nis', $data['nis']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('jurusan', $data['jurusan']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 }

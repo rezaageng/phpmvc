@@ -17,4 +17,12 @@ class Waifu extends Controller {
         $this->view('waifu/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function tambah()
+    {
+        if ($this->model('Waifu_model')->tambahDataWaifu($_POST) > 0) {
+            header('Location: ' . BASEURL. '/waifu');
+            exit;
+        }
+    }
 }
