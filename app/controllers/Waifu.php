@@ -61,4 +61,13 @@ class Waifu extends Controller {
             exit;
         }
     }
+
+    public function cari() {
+        $data['judul'] = 'Daftar Waifu';
+        $data['wfu'] = $this->model('Waifu_model')->cariWaifu();
+
+        $this->view('templates/header', $data);
+        $this->view('waifu/index', $data);
+        $this->view('templates/footer');
+    }
 }

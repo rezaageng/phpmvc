@@ -4,20 +4,41 @@
             <?php Flasher::flash(); ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <!-- Button trigger modal -->
+
+    <div class="row mt-3">
+        <col-lg-6>
             <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Data
             </button>
+        </col-lg-6>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-lg-6">
+            <form action="<?= BASEURL ?>/waifu/cari" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari...." id="keyword" name="keyword" autocomplete="off">
+                    <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
             <h3 class="mt-4">Daftar Waifu</h3>
             <ul class="list-group">
                 <?php foreach ($data["wfu"] as $wfu) : ?>
                 <li class="list-group-item">
                     <?= $wfu['nama'] ?>
-                    <a href="<?= BASEURL ?>/waifu/hapus/<?=$wfu['id']?>"class="btn-sm btn-danger text-decoration-none float-end ms-1" onclick="return confirm('Hapus?')">Hapus</a>
-                    <a href="<?= BASEURL ?>/waifu/edit/<?=$wfu['id']?>"class="btn-sm btn-success text-decoration-none float-end ms-1 editData" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $wfu['id']; ?>">Edit</a>
-                    <a href="<?= BASEURL ?>/waifu/detail/<?=$wfu['id']?>"class="btn-sm btn-primary text-decoration-none float-end ms-1">Detail</a>
+                    <a href="<?= BASEURL ?>/waifu/hapus/<?=$wfu['id']?>"
+                        class="btn-sm btn-danger text-decoration-none float-end ms-1"
+                        onclick="return confirm('Hapus?')">Hapus</a>
+                    <a href="<?= BASEURL ?>/waifu/edit/<?=$wfu['id']?>"
+                        class="btn-sm btn-success text-decoration-none float-end ms-1 editData" data-bs-toggle="modal"
+                        data-bs-target="#formModal" data-id="<?= $wfu['id']; ?>">Edit</a>
+                    <a href="<?= BASEURL ?>/waifu/detail/<?=$wfu['id']?>"
+                        class="btn-sm btn-primary text-decoration-none float-end ms-1">Detail</a>
                 </li>
                 <?php endforeach; ?>
             </ul>
@@ -35,7 +56,7 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL ?>/waifu/tambah" method="post">
-                <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama">
