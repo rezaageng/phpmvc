@@ -43,4 +43,22 @@ class Waifu extends Controller {
             exit;
         }
     }
+
+    public function getUbah()
+    {
+        echo json_encode($this->model('Waifu_model')->getWaifuById($_POST['id']));
+    }
+
+    public function ubah()
+    {
+        if ($this->model('Waifu_model')->ubahDataWaifu($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubahkan', 'success');
+            header('Location: ' . BASEURL. '/waifu');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'diubahkan', 'danger');
+            header('Location: ' . BASEURL. '/waifu');
+            exit;
+        }
+    }
 }

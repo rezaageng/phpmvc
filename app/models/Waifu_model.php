@@ -43,4 +43,19 @@ class Waifu_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function ubahDataWaifu($data)
+    {
+        $query = "UPDATE waifu SET nama = :nama, nis = :nis, email = :email, jurusan = :jurusan WHERE id = :id";
+
+        $this->db->query($query);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nis', $data['nis']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('jurusan', $data['jurusan']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

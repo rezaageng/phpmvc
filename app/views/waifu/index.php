@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-6">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Data
             </button>
             <h3 class="mt-4">Daftar Waifu</h3>
@@ -16,6 +16,7 @@
                 <li class="list-group-item">
                     <?= $wfu['nama'] ?>
                     <a href="<?= BASEURL ?>/waifu/hapus/<?=$wfu['id']?>"class="btn-sm btn-danger text-decoration-none float-end ms-1" onclick="return confirm('Hapus?')">Hapus</a>
+                    <a href="<?= BASEURL ?>/waifu/edit/<?=$wfu['id']?>"class="btn-sm btn-success text-decoration-none float-end ms-1 editData" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $wfu['id']; ?>">Edit</a>
                     <a href="<?= BASEURL ?>/waifu/detail/<?=$wfu['id']?>"class="btn-sm btn-primary text-decoration-none float-end ms-1">Detail</a>
                 </li>
                 <?php endforeach; ?>
@@ -34,6 +35,7 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL ?>/waifu/tambah" method="post">
+                <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama">
@@ -47,8 +49,8 @@
                         <input type="email" class="form-control" id="email" name="email">
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <select class="form-select" aria-label="Default select example" name="jurusan">
+                        <label for="jurusan" class="form-label">Jurusan</label>
+                        <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
                             <option value="RPL">RPL</option>
                             <option value="MM">MM</option>
                             <option value="TKJ">TKJ</option>
